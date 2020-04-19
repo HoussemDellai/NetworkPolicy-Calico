@@ -30,13 +30,13 @@ wget -qO- --timeout=2 http://backend
 kubectl exec alpine -n development -- wget -qO- --timeout=2 http://backend
 
 # 2. Allow inbound traffic based on pod labels
-# Update the previous Network Policy to allow traffic from only pods with specific labels
+# 2.1. Update the previous Network Policy to allow traffic from only pods with specific labels
 kubectl apply -f 2-network-policy-allow-pod.yaml
-# 2.1. Test pod with matching labels
+# 2.2. Test pod with matching labels
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 wget -qO- http://backend
 
-# 2.2. Test pod without matching labels
+# 2.3. Test pod without matching labels
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 wget -qO- --timeout=2 http://backend
 
