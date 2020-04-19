@@ -1,3 +1,4 @@
+# 1-namespace-development.yaml
 apiVersion: v1
 kind: Namespace
 metadata:

@@ -22,7 +22,6 @@ metadata:
   labels:
     app: webapp
     role: backend
-
 spec:
   ports:
   - port: 80
