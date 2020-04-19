@@ -1,4 +1,4 @@
-# 3-network-policy-allow-pod-namespace.yaml
+# 4-network-policy-allow-pod-namespace.yaml
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -18,3 +18,12 @@ spec:
         matchLabels:
           app: webapp
           role: frontend
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          purpose: development
+      podSelector:
+        matchLabels:
+          app: webapp
+          role: database
