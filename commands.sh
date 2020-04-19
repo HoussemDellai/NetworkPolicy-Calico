@@ -24,10 +24,10 @@ kubectl apply -f 1-network-policy-deny-all.yaml
 
 # 1.5. Test access to backend Pod
 # We'll reuse the same Aplpine image to run the test:
-kubectl exec alpine -n development -- wget -qO- --timeout=2 http://backend
-# or
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 wget -qO- --timeout=2 http://backend
+# or
+kubectl exec alpine -n development -- wget -qO- --timeout=2 http://backend
 
 # 2. Allow inbound traffic based on pod labels
 # Update the previous Network Policy to allow traffic from only pods with specific labels
